@@ -1,0 +1,8 @@
+---
+layout: post
+title: "It lives"
+date: 2014-04-29 13:50:08 +0930
+comments: true
+categories: 
+---
+I followed the bouncing ball and this is where it lead :) Pretty simple to get this blog up and running with github pages and octopress.
