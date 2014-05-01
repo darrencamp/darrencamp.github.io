@@ -1,0 +1,170 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>WiX on the build server |  Darren Camp</title>
+  <meta name="author" content="Darren Camp">
+  
+
+  
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="/javascripts/libs/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body id="post">
+
+  <div id="container">
+    <header>
+    <a href="http://darrencamp.github.io">Home</a>
+</header>
+
+    <article>
+
+
+  <h1 class="article-title">WiX on the Build Server</h1>
+  <div class="article-content"><p>First post in a long while and its about WiX. I was trying to get a WiX project to build without having to install it on the build server. First off I followed this <a href="http://wix.sourceforge.net/manual-wix3/daily_builds.htm">Integrating WiX Projects into Daily Builds</a>. I had to conditionally set the $(SourceCodeControlRoot) like so</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;PropertyGroup&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;SourcesDirectory</span> <span class="na">Condition=</span><span class="s">&quot; $(SourcesDirectory) == &#39;&#39;&quot;</span><span class="nt">&gt;</span>$(MSBuildProjectDirectory)\..\<span class="nt">&lt;/SourcesDirectory&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;WixToolPath&gt;</span>$(SourcesDirectory)tools\wix\3.5\<span class="nt">&lt;/WixToolPath&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;WixTargetsPath&gt;</span>$(WixToolPath)Wix.targets<span class="nt">&lt;/WixTargetsPath&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;WixTasksPath&gt;</span>$(WixToolPath)wixtasks.dll<span class="nt">&lt;/WixTasksPath&gt;</span>
+</span><span class='line'><span class="nt">&lt;/PropertyGroup&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However when building the project it crashed visual studio with a help error message like</p>
+
+<blockquote><p>&#8220;could not load Candle.exe or one of its dependencies, Operation Not Supported&#8221;.</p></blockquote>
+
+
+<p></p>
+
+<p>Googling turned up a bunch of issues around 64bit image formats which didn&rsquo;t apply. Digging a little deeper revealed this error message</p>
+
+<blockquote><p>&#8220;An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.&#8221;</p></blockquote>
+
+
+<p>I wasn&rsquo;t loading it from a network location it was right there on the local file system. I had downloaded the latest binaries zip file for WiX 3.5 and unzipped it straight into the directory like the above link mentions. Since it was download from the interwebs the files had been marked as blocked.</p>
+
+<p>Now what I needed was a way to remove the blocked attribute from all the files, there was no way I wanted to do it manually. Luckily SysInternals has a tool called <a href="http://technet.microsoft.com/en-us/sysinternals/bb897440">Streams</a> which will clear that attribute from all files in a directory.</p>
+
+<p>How I got those files into that state in the first place I&rsquo;m not sure because I tried it again and the files weren&rsquo;t blocked. At least I managed to figure it out.</p>
+</div>
+  <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://darrencamp.github.io/blog/2011/05/11/wix-on-the-build-server/" data-via="codingintent" data-counturl="http://darrencamp.github.io/blog/2011/05/11/wix-on-the-build-server/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+</div>
+
+  
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread"><div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'codingintent';
+  var disqus_identifier = 'http://darrencamp.github.io/blog/2011/05/11/wix-on-the-build-server/';
+  var disqus_url = 'http://darrencamp.github.io/blog/2011/05/11/wix-on-the-build-server/';
+  //var disqus_developer = 1;
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+
+</article>
+
+
+        <footer>
+
+    </footer>
+
+  </div>
+
+    <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="/javascripts/app.js"></script>
+  <!-- end scripts-->
+
+	
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+ 
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
+
