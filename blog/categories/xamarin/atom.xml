@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Xamarin | Coding Intent]]></title>
   <link href="http://darrencamp.github.io/blog/categories/xamarin/atom.xml" rel="self"/>
   <link href="http://darrencamp.github.io/"/>
-  <updated>2014-05-02T15:53:06+09:30</updated>
+  <updated>2014-05-02T15:58:14+09:30</updated>
   <id>http://darrencamp.github.io/</id>
   <author>
     <name><![CDATA[Darren Camp]]></name>
@@ -27,29 +27,6 @@
 <p>Thanks Xamarin for a great product and excellent learning resources.</p>
 
 <p>I&rsquo;ll be starting on my sample app over the weekend and continuing it on Monday. I wonder if my opinion will be the same after trying to use it in anger :)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Today I Start to Look at Xamarin and iOS Development]]></title>
-    <link href="http://darrencamp.github.io/blog/2014/05/01/today-i-start-to-look-at-xamarin-and-ios-development/"/>
-    <updated>2014-05-01T13:38:22+09:30</updated>
-    <id>http://darrencamp.github.io/blog/2014/05/01/today-i-start-to-look-at-xamarin-and-ios-development</id>
-    <content type="html"><![CDATA[<p>It&rsquo;s always difficult to pick something to learn for PD, there&rsquo;s so much out there that I want to explore. This time around I&rsquo;m looking at mobile development with Xamarin, in particular iOS development. I&rsquo;ve been lucky enough to be signed up to Xamarin University. I&rsquo;m planning on getting a certification so I&rsquo;ll be taking a set of online classes to help me achieve that. However I find that I learn best by doing so I need to come up with some sort of simple app that I can develop. A friend and I have been talking about putting together an app to manage the stuff we own and be able to loan our things out to friends and family so I&rsquo;m going with that idea. Here are the user stories I&rsquo;m going to aim for:</p>
-
-<ul>
-<li><p><em>User Story 1:</em>
-As the owner of my stuff I want to take a photo of one of my things so that I can loan it out to someone on my contact list.</p></li>
-<li><p><em>User Story 2:</em>
-As the owner of an item that had been lent out I want to send an sms to the person that is borrowing it so that I can send them a friendly reminder that they have my stuff.</p></li>
-<li><p><em>User Story 3:</em>
-As the owner of item that has been lent out I want to mark it as returned so that I can use it again or loan it out to another person.</p></li>
-<li><p><em>User Story 4:</em>
-As the owner of lots of stuff I want to see a list of all my items so that I can see all the items I have and which ones are on loan.</p></li>
-</ul>
-
-
-<p>Hopefully by the end of this PD I&rsquo;ll be well on my way to earning that certification and a nice app to start using.</p>
 ]]></content>
   </entry>
   
