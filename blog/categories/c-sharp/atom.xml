@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: C# | Coding Intent]]></title>
-  <link href="http://darrencamp.github.io/blog/categories/c-number/atom.xml" rel="self"/>
+  <title><![CDATA[Category: C-sharp | Coding Intent]]></title>
+  <link href="http://darrencamp.github.io/blog/categories/c-sharp/atom.xml" rel="self"/>
   <link href="http://darrencamp.github.io/"/>
-  <updated>2014-05-02T16:08:13+09:30</updated>
+  <updated>2014-05-02T20:34:39+09:30</updated>
   <id>http://darrencamp.github.io/</id>
   <author>
     <name><![CDATA[Darren Camp]]></name>
