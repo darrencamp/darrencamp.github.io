@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C# | Coding Intent]]></title>
+  <link href="http://darrencamp.github.io/blog/categories/c-number/atom.xml" rel="self"/>
+  <link href="http://darrencamp.github.io/"/>
+  <updated>2014-05-02T16:08:13+09:30</updated>
+  <id>http://darrencamp.github.io/</id>
+  <author>
+    <name><![CDATA[Darren Camp]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[WiX on the Build Server]]></title>
+    <link href="http://darrencamp.github.io/blog/2011/05/11/wix-on-the-build-server/"/>
+    <updated>2011-05-11T23:50:00+09:30</updated>
+    <id>http://darrencamp.github.io/blog/2011/05/11/wix-on-the-build-server</id>
+    <content type="html"><![CDATA[<p>First post in a long while and its about WiX. I was trying to get a WiX project to build without having to install it on the build server. First off I followed this <a href="http://wix.sourceforge.net/manual-wix3/daily_builds.htm">Integrating WiX Projects into Daily Builds</a>. I had to conditionally set the $(SourceCodeControlRoot) like so</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;PropertyGroup&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;SourcesDirectory</span> <span class="na">Condition=</span><span class="s">&quot; $(SourcesDirectory) == &#39;&#39;&quot;</span><span class="nt">&gt;</span>$(MSBuildProjectDirectory)..<span class="ni">&amp;lt;</span>/SourcesDirectory&gt;
+</span><span class='line'>  <span class="nt">&lt;WixToolPath&gt;</span>$(SourcesDirectory)tools\wix\3.5<span class="ni">&amp;lt;</span>/WixToolPath&gt;
+</span><span class='line'>  <span class="nt">&lt;WixTargetsPath&gt;</span>$(WixToolPath)Wix.targets<span class="nt">&lt;/WixTargetsPath&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;WixTasksPath&gt;</span>$(WixToolPath)wixtasks.dll<span class="nt">&lt;/WixTasksPath&gt;</span>
+</span><span class='line'><span class="nt">&lt;/PropertyGroup&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>However when building the project it crashed visual studio with a help error message like</p>
+
+<p><blockquote><p>&ldquo;could not load Candle.exe or one of its dependencies, Operation Not Supported&rdquo;.</p></blockquote></p>
+
+<p>Googling turned up a bunch of issues around 64bit image formats which didn&rsquo;t apply. Digging a little deeper revealed this error message</p>
+
+<p><blockquote><p>&ldquo;An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See <a href="http://go.microsoft.com/fwlink/?LinkId=155569">http://go.microsoft.com/fwlink/?LinkId=155569</a> for more information.&rdquo;</p></blockquote></p>
+
+<p>I wasn&rsquo;t loading it from a network location it was right there on the local file system. I had downloaded the latest binaries zip file for WiX 3.5 and unzipped it straight into the directory like the above link mentions. Since it was download from the interwebs the files had been marked as blocked.</p>
+
+<p>Now what I needed was a way to remove the blocked attribute from all the files, there was no way I wanted to do it manually. Luckily SysInternals has a tool called <a href="http://technet.microsoft.com/en-us/sysinternals/bb897440">Streams</a> which will clear that attribute from all files in a directory.</p>
+
+<p>How I got those files into that state in the first place I&rsquo;m not sure because I tried it again and the files weren&rsquo;t blocked. At least I managed to figure it out.</p>
+]]></content>
+  </entry>
+  
+</feed>
