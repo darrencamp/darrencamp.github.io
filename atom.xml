@@ -4,7 +4,7 @@
   <title><![CDATA[Coding Intent]]></title>
   <link href="http://darrencamp.github.io/atom.xml" rel="self"/>
   <link href="http://darrencamp.github.io/"/>
-  <updated>2014-05-01T15:04:13+09:30</updated>
+  <updated>2014-05-02T15:50:07+09:30</updated>
   <id>http://darrencamp.github.io/</id>
   <author>
     <name><![CDATA[Darren Camp]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[First Thoughts on Xamarin]]></title>
+    <link href="http://darrencamp.github.io/blog/2014/05/02/first-thoughts-on-xamarin/"/>
+    <updated>2014-05-02T15:35:39+09:30</updated>
+    <id>http://darrencamp.github.io/blog/2014/05/02/first-thoughts-on-xamarin</id>
+    <content type="html"><![CDATA[<p>This is the end of my second day of PD on Xamarin. I&rsquo;ve attend a few online classes at Xamarin University and have gone though a couple of labs. My first impressions are that the coding is the same it&rsquo;s just a different UI construction.</p>
+
+<p>For the last 4+ years I&rsquo;ve been in web development so the UI paradigm is a big switch but I imagine that if I had been developing WPF or perhaps WinForms apps then it wouldn&rsquo;t be a big difference at all.</p>
+
+<p>I love the fact I can use C# and .Net to code up an application for the iPhone. I was avoiding iPhone development as I didn&rsquo;t want to learn to use xcode and Objective-C. I have a bunch of languages I want to learn and Objective-C wasn&rsquo;t one of them, so I&rsquo;m grateful that I can use a language I already know.</p>
+
+<p>Thanks Xamarin for a great product and excellent learning resources.</p>
+
+<p>I&rsquo;ll be starting on my sample app over the weekend and continuing it on Monday. I wonder if my opinion will be the same after trying to use it in anger :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Today I Start to Look at Xamarin and iOS Development]]></title>
