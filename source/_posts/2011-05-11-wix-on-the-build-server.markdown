@@ -3,7 +3,7 @@ layout: post
 title: "WiX on the build server"
 date: 2011-05-11 23:50:00 +0930
 comments: true
-categories: 
+categories: [WiX, c#]
 ---
 
 First post in a long while and its about WiX. I was trying to get a WiX project to build without having to install it on the build server. First off I followed this [Integrating WiX Projects into Daily Builds](http://wix.sourceforge.net/manual-wix3/daily_builds.htm). I had to conditionally set the $(SourceCodeControlRoot) like so
