@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Xamarin | Coding Intent]]></title>
   <link href="http://darrencamp.github.io/blog/categories/xamarin/atom.xml" rel="self"/>
   <link href="http://darrencamp.github.io/"/>
-  <updated>2014-05-02T20:34:39+09:30</updated>
+  <updated>2014-05-22T21:16:24+08:00</updated>
   <id>http://darrencamp.github.io/</id>
   <author>
     <name><![CDATA[Darren Camp]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[First Thoughts on Xamarin]]></title>
     <link href="http://darrencamp.github.io/blog/2014/05/02/first-thoughts-on-xamarin/"/>
-    <updated>2014-05-02T15:35:39+09:30</updated>
+    <updated>2014-05-02T14:05:39+08:00</updated>
     <id>http://darrencamp.github.io/blog/2014/05/02/first-thoughts-on-xamarin</id>
     <content type="html"><![CDATA[<p>This is the end of my second day of PD on Xamarin. I&rsquo;ve attend a few online classes at Xamarin University and have gone though a couple of labs. My first impressions are that the coding is the same it&rsquo;s just a different UI construction.</p>
 
@@ -33,7 +33,7 @@
   <entry>
     <title type="html"><![CDATA[Today I Start to Look at Xamarin and iOS Development]]></title>
     <link href="http://darrencamp.github.io/blog/2014/05/01/today-i-start-to-look-at-xamarin-and-ios-development/"/>
-    <updated>2014-05-01T13:38:22+09:30</updated>
+    <updated>2014-05-01T12:08:22+08:00</updated>
     <id>http://darrencamp.github.io/blog/2014/05/01/today-i-start-to-look-at-xamarin-and-ios-development</id>
     <content type="html"><![CDATA[<p>It&rsquo;s always difficult to pick something to learn for PD, there&rsquo;s so much out there that I want to explore. This time around I&rsquo;m looking at mobile development with Xamarin, in particular iOS development. I&rsquo;ve been lucky enough to be signed up to Xamarin University. I&rsquo;m planning on getting a certification so I&rsquo;ll be taking a set of online classes to help me achieve that. However I find that I learn best by doing so I need to come up with some sort of simple app that I can develop. A friend and I have been talking about putting together an app to manage the stuff we own and be able to loan our things out to friends and family so I&rsquo;m going with that idea. Here are the user stories I&rsquo;m going to aim for:</p>
 

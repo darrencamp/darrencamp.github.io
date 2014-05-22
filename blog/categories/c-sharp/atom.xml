@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C-sharp | Coding Intent]]></title>
   <link href="http://darrencamp.github.io/blog/categories/c-sharp/atom.xml" rel="self"/>
   <link href="http://darrencamp.github.io/"/>
-  <updated>2014-05-02T20:34:39+09:30</updated>
+  <updated>2014-05-22T21:16:24+08:00</updated>
   <id>http://darrencamp.github.io/</id>
   <author>
     <name><![CDATA[Darren Camp]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[WiX on the Build Server]]></title>
     <link href="http://darrencamp.github.io/blog/2011/05/11/wix-on-the-build-server/"/>
-    <updated>2011-05-11T23:50:00+09:30</updated>
+    <updated>2011-05-11T22:20:00+08:00</updated>
     <id>http://darrencamp.github.io/blog/2011/05/11/wix-on-the-build-server</id>
     <content type="html"><![CDATA[<p>First post in a long while and its about WiX. I was trying to get a WiX project to build without having to install it on the build server. First off I followed this <a href="http://wix.sourceforge.net/manual-wix3/daily_builds.htm">Integrating WiX Projects into Daily Builds</a>. I had to conditionally set the $(SourceCodeControlRoot) like so</p>
 
